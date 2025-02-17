@@ -1,17 +1,19 @@
 #!/bin/bash
 # Created by MVG (@PBandJamf) for Choate Rosemary Hall
-# Queries Deep Freeze status and returns either Frozen, Thawed, or "Not Installed"
 
+# Reports the status of Deep Freeze on a Mac and returns the result to a string in Jamf Pro as an Extension Attribute (EA) string.
+# Make sure you set the EA "Data type" to "string" before expecting any of this to work!
+# --------
 # CHANGELOG
 
 # Version 1.2.4
-# Fixed output so Jamf can actually read it as an Extension Attribute string. Derp.
+# - Fixed output so Jamf can actually read it as an EA string. Derp.
 
 # Version 1.2.3
-# Added handling for presence of deepfreeze binary; exit with code 3 and print "Not installed" if not found. Else, proceed.
+# - Added handling for presence of deepfreeze binary; exit with code 3 and print "Not installed" if not found. Else, proceed.
 
 # Version 1.2.2
-# Further refined case handling logic.
+# - Further refined case handling logic.
 
 # Version 1.2.1
 # - Fixed interpretation issue once and for all by adding xargs to remove leading/trailing whitespace that was resulting in blank/nonsensical output.
