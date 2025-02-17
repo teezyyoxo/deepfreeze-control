@@ -4,6 +4,9 @@
 
 # CHANGELOG
 
+# Version 1.2.2
+# Further refined case handling logic.
+
 # Version 1.2.1
 # - Fixed interpretation issue once and for all by adding xargs to remove leading/trailing whitespace that was resulting in blank/nonsensical output.
 
@@ -31,16 +34,14 @@ case "$STATUS_OUTPUT" in
     "Thawed")
         STATUS="Thawed"
         ;;
-    "Thawed but restart required")
-        STATUS="Thawed but restart required"
+    "Thaw (restart required)"
+        STATUS="Thawed, pending reboot"
         ;;
     "Frozen")
         STATUS="Frozen"
         ;;
     *)
-        STATUS="Error: Unknown status ($STATUS_OUTPUT)"
+        # Output the value
+        echo "$STATUS_OUTPUT"
         ;;
 esac
-
-# Output status as a simple text string
-echo "$STATUS"
