@@ -20,8 +20,6 @@
 # Version 1.0.0
 # - Initial release
 
-#!/bin/bash
-
 # Get Deep Freeze status
 STATUS_OUTPUT=$(/usr/local/bin/deepfreeze status --thawed 2>/dev/null)
 
