@@ -3,10 +3,9 @@
 This repository contains a small set of bash scripts (for macOS) to integrate with Jamf Pro for remote management of Deep Freeze.
 As always, your mileage may vary.
 If you have any questions or run into issues, please submit a PR.
+*BTW, because I had to figure this out on my own, this is the secret to getting your Extension Attributes (strings, specifically) to print properly: variations of* `echo "<result>$string</result>"`.
+Hopefully that saves you a bit of trouble when you make your own ;)
 
-BTW, because I had to figure this out on my own, this is the secret to getting your Extension Attributes (strings, specifically) to print properly: variations of `echo "<result>$string</result>"`.
-Hopefully that saves you a bit of trouble when you make your own :)
----
 ## Scripts Overview
 
 ### 1. `deepfreeze-STATUS-macOS.sh`
