@@ -4,6 +4,9 @@
 
 # CHANGELOG
 
+# Version 1.2.3
+# Added handling for presence of deepfreeze binary; exit with code 3 and print "Not installed" if not found. Else, proceed.
+
 # Version 1.2.2
 # Further refined case handling logic.
 
@@ -22,6 +25,14 @@
 
 # Version 1.0.0
 # - Initial release
+# --------
+# READY? SET? GO!
+
+# Check if Deep Freeze binary exists
+if [ ! -x "/usr/local/bin/deepfreeze" ]; then
+    echo "Not installed"
+    exit 3
+fi
 
 # Get Deep Freeze status
 STATUS_OUTPUT=$(/usr/local/bin/deepfreeze status --thawed 2>/dev/null)
