@@ -4,9 +4,10 @@ This repository contains a small set of bash scripts (for macOS) to integrate wi
 As always, your mileage may vary.
 If you have any questions or run into issues, please submit a PR.
 
-*BTW, because I had to figure this out on my own, this is the secret to getting your Extension Attributes (strings, specifically) to print properly: variations of* `echo "<result>$string</result>"`.
+*BTW. PRO TIP: Because I had to figure this out on my own, this is the secret to getting your Extension Attributes (strings, specifically) to print properly: variations of* `echo "<result>$string</result>"`.
+If you look at the code, you'll see how this gets used.
 
-Hopefully that saves you a bit of trouble when you make your own ;)
+Hopefully this tip saves you a bit of trouble when you make your own ;)
 
 ## Scripts Overview
 
