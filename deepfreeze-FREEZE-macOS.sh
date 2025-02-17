@@ -1,12 +1,15 @@
 #!/bin/bash
 
 # Created by MVG (@PBandJamf) for Choate Rosemary Hall
-# Bash script to freeze a Mac.
+# Bash script to freeze a Mac with Deep Freeze installed.
 
 # -------------------------------------------
-# Version: 1.0.1
-# Changelog:
-#   - 1.0.1: Updated status check to use "deepfreeze status --thawed".
+# CHANGELOG
+#
+# Version 1.0.1
+# - Updated status check to use "deepfreeze status --thawed".
+# Version 1.0.0
+# - Initial release.
 # -------------------------------------------
 
 # Check if Deep Freeze is installed
