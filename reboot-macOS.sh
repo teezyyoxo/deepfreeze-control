@@ -8,6 +8,8 @@
 ###########################################
 # CHANGELOG
 
+# Version 1.1.1
+# - Fixed issue with shutdown command - was using /usr/sbin/shutdown instead of /sbin/shutdown and it did not play well with Jamf.
 # Version 1.1.0
 # - Added 20-second timeout and user message
 # Version 1.0.0
@@ -27,10 +29,11 @@ osascript -e 'display dialog "The system will reboot in 20 seconds. Save your wo
 sleep 20
 
 # Reboot command
-echo "[$DATE] - Rebooting the system..." >> $LOGFILE
-/usr/sbin/shutdown -r now
+/sbin/shutdown -r now
 
-# Log reboot initiated
+# Write to log
+echo "[$DATE] - Rebooting the system..." >> $LOGFILE
+# (reboot initiated)
 echo "[$DATE] - Reboot initiated." >> $LOGFILE
 echo "[$DATE] - Reboot script finished." >> $LOGFILE
 
