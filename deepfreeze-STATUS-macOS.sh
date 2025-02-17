@@ -4,6 +4,9 @@
 
 # CHANGELOG
 
+# Version 1.2.0a
+# - Added more debugging for testing purposes (with bash -x) to identify issues with status interpretation
+
 # Version 1.2.0
 # - Further refined status interpretation
 
@@ -14,27 +17,38 @@
 # Version 1.0.0
 # - Initial release
 
+#!/bin/bash
+
 # Get Deep Freeze status
-STATUS_CODE=$(/usr/local/bin/deepfreeze status --thawed 2>/dev/null)
+STATUS_OUTPUT=$(/usr/local/bin/deepfreeze status --thawed 2>/dev/null)
 
-# Interpret status output
-case "$STATUS_OUTPUT" in
-    "Thawed")
-        STATUS="Thawed"
-        ;;
-    "Thawed but restart required")
-        STATUS="Thawed but restart required"
-        ;;
-    "Frozen")
-        STATUS="Frozen"
-        ;;
-    *)
-        STATUS="Error: Unknown status ($STATUS_OUTPUT)"
-        ;;
-esac
+# Debug: Print raw output with quotes to identify hidden characters
+echo "Raw output: '$STATUS_OUTPUT'"
 
-# Output as an XML for Jamf Pro Extension Attribute
-cat <<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<result>$STATUS</result>
-EOF
+# Check if the output is empty
+if [ -z "$STATUS_OUTPUT" ]; then
+    STATUS="Error: No output from deepfreeze"
+else
+    # Use echo to debug and see what might be causing an issue
+    echo "Debugging case options"
+    echo "Expected options: 'Thawed', 'Thawed but restart required', 'Frozen'"
+
+    # Interpret status output
+    case "$STATUS_OUTPUT" in
+        "Thawed")
+            STATUS="Thawed"
+            ;;
+        "Thawed but restart required")
+            STATUS="Thawed but restart required"
+            ;;
+        "Frozen")
+            STATUS="Frozen"
+            ;;
+        *)
+            STATUS="Error: Unknown status ($STATUS_OUTPUT)"
+            ;;
+    esac
+fi
+
+# Output status as a simple text string
+echo "$STATUS"
