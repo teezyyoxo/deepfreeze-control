@@ -9,6 +9,15 @@ If you look at the code, you'll see how this gets used.
 
 Hopefully this tip saves you a bit of trouble when you make your own ;)
 
+**All scripts and deployments have been successfully tested using the following**:
+* 14" MacBook Pro (M1 Pro) | macOS Sequoia 15.2
+* 13" MacBook Pro 2TBT3 (Intel, A2289) | macOS Sonoma 14.6.1
+* 24" iMac (M3) | macOS Sonoma 14.6.0, 14.6.1
+* 27" iMac 5K (2020) | macOS Sonoma 14.5.0
+* 21.5" iMac (2017) | macOS Ventura 13.7.1
+* Deep Freeze 7.70.220.0230 on Sonoma and newer
+* Deep Freeze 7.60.220.0202 on Venutra and older
+
 ## Scripts Overview
 
 ### 1. `deepfreeze-STATUS-macOS.sh`
