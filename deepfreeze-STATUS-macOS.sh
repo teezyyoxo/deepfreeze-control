@@ -4,6 +4,9 @@
 
 # CHANGELOG
 
+# Version 1.2.1
+# - Fixed interpretation issue once and for all by adding xargs to remove leading/trailing whitespace that was resulting in blank/nonsensical output.
+
 # Version 1.2.0a
 # - Added more debugging for testing purposes (with bash -x) to identify issues with status interpretation
 
@@ -22,33 +25,24 @@
 # Get Deep Freeze status
 STATUS_OUTPUT=$(/usr/local/bin/deepfreeze status --thawed 2>/dev/null)
 
-# Debug: Print raw output with quotes to identify hidden characters
-echo "Raw output: '$STATUS_OUTPUT'"
+# Remove any leading/trailing whitespace from the output
+STATUS_OUTPUT=$(echo "$STATUS_OUTPUT" | xargs)
 
-# Check if the output is empty
-if [ -z "$STATUS_OUTPUT" ]; then
-    STATUS="Error: No output from deepfreeze"
-else
-    # Use echo to debug and see what might be causing an issue
-    echo "Debugging case options"
-    echo "Expected options: 'Thawed', 'Thawed but restart required', 'Frozen'"
-
-    # Interpret status output
-    case "$STATUS_OUTPUT" in
-        "Thawed")
-            STATUS="Thawed"
-            ;;
-        "Thawed but restart required")
-            STATUS="Thawed but restart required"
-            ;;
-        "Frozen")
-            STATUS="Frozen"
-            ;;
-        *)
-            STATUS="Error: Unknown status ($STATUS_OUTPUT)"
-            ;;
-    esac
-fi
+# Interpret status output
+case "$STATUS_OUTPUT" in
+    "Thawed")
+        STATUS="Thawed"
+        ;;
+    "Thawed but restart required")
+        STATUS="Thawed but restart required"
+        ;;
+    "Frozen")
+        STATUS="Frozen"
+        ;;
+    *)
+        STATUS="Error: Unknown status ($STATUS_OUTPUT)"
+        ;;
+esac
 
 # Output status as a simple text string
 echo "$STATUS"
