@@ -6,6 +6,8 @@
 # -------------------------------------------
 # CHANGELOG
 #
+# Version 1.0.3
+# - Refined binary presence check verbiage.
 # Version 1.0.2
 # - Added check for "Thaw (restart required)" during initial check and exit with code 2.
 # - Updated exit codes after thaw command to handle "Thaw (restart required)" with code 2 and other errors with code 1.
@@ -17,7 +19,7 @@
 
 # Check if Deep Freeze is installed
 if ! command -v deepfreeze &> /dev/null; then
-    echo "Deep Freeze command not found. Exiting."
+    echo "Deep Freeze not installed. Exiting."
     exit 1
 fi
 

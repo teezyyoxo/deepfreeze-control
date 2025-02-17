@@ -6,6 +6,8 @@
 # -------------------------------------------
 # CHANGELOG
 #
+# Version 1.0.2
+# - Refined binary presence check verbiage.
 # Version 1.0.1
 # - Updated status check to use "deepfreeze status --thawed".
 # Version 1.0.0
@@ -14,7 +16,7 @@
 
 # Check if Deep Freeze is installed
 if ! command -v deepfreeze &> /dev/null; then
-    echo "Deep Freeze command not found. Exiting."
+    echo "Deep Freeze not installed. Exiting."
     exit 1
 fi
 
