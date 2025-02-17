@@ -6,6 +6,7 @@ If you have any questions or run into issues, please submit a PR.
 
 *BTW. PRO TIP: Because I had to figure this out on my own, this is the secret to getting your Extension Attributes (strings, specifically) to print properly: variations of* `echo "<result>$string</result>"`.
 If you look at the code, you'll see how this gets used.
+Also - "bash -x <script>.sh" is HUGE in troubleshooting. Learned that while working on this project.
 
 Hopefully this tip saves you a bit of trouble when you make your own ;)
 
