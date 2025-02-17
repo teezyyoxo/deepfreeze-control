@@ -4,6 +4,9 @@
 
 # CHANGELOG
 
+# Version 1.2.4
+# Fixed output so Jamf can actually read it as an Extension Attribute string. Derp.
+
 # Version 1.2.3
 # Added handling for presence of deepfreeze binary; exit with code 3 and print "Not installed" if not found. Else, proceed.
 
@@ -30,7 +33,7 @@
 
 # Check if Deep Freeze binary exists
 if [ ! -x "/usr/local/bin/deepfreeze" ]; then
-    echo "Not installed"
+    echo "<result>Not installed</result>"
     exit 3
 fi
 
@@ -40,19 +43,19 @@ STATUS_OUTPUT=$(/usr/local/bin/deepfreeze status --thawed 2>/dev/null)
 # Remove any leading/trailing whitespace from the output
 STATUS_OUTPUT=$(echo "$STATUS_OUTPUT" | xargs)
 
-# Interpret status output
+# Interpret and output status directly
 case "$STATUS_OUTPUT" in
     "Thawed")
-        STATUS="Thawed"
+        echo "<result>Thawed</result>"
         ;;
-    "Thaw (restart required)"
-        STATUS="Thawed, pending reboot"
+    "Thawed but restart required")
+        echo "<result>Thawed but restart required</result>"
         ;;
     "Frozen")
-        STATUS="Frozen"
+        echo "<result>Frozen</result>"
         ;;
     *)
-        # Output the value
-        echo "$STATUS_OUTPUT"
+        # Output result for Jamf (EA)
+        echo "<result>$STATUS_OUTPUT</result>"
         ;;
 esac
